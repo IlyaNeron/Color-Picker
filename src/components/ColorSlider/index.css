@@ -1,7 +1,84 @@
+.chosen-color {
+    width: 15%;
+    border-right: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.chosen-color .color-indicator {
+    width: 20px;
+    height: 20px;
+}
+
 .color-slider-menu {
+    cursor: default;
+    box-sizing: border-box;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    padding: 15px;
+    right: 0;
+    user-select: none;
     top: 120%;
     background: #fff;
+    width: 306px;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.control-block {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.control-block button {
+    border: none;
+    height: 25px;
+    padding: 0 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+}
+
+.control-block button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.control-block .btn-enter {
+    background: #147e06;
+    color: #fff;
+}
+
+.control-block .btn-cancel {
+    background: #dcdfdb;
+    color: rgb(75, 73, 73);
+}
+
+.slider-block {
+    margin: 0 0 20px;
+    display: flex;
+}
+
+.slider-block .color-lines {
+    width: 100%;
+    padding: 7px 0;
+}
+
+.slider-block .color-range-name {
+    margin-right: 10px;
+}
+
+.slider-block .color-range-name span {
+    display: block;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.slider-block .color-range-name span:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.slider-block .color-range-sliders {
+    width: 100%;
+    padding: 6px 0;
 }

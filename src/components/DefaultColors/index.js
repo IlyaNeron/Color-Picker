@@ -21,9 +21,9 @@ const defaultColorsArray = [
   }
 ];
 
-const DefaultColorPicker = props => {
+const DefaultColors = props => {
   const defaultColorsMenuRef = React.useRef(null);
-  const [isDefaultMenuOpened, setDefaultMenuOpened] = React.useState(false);
+  const [isColorsMenuOpened, setColorsMenuOpened] = React.useState(false);
 
   React.useEffect(() => {
     document.addEventListener("click", detectOutClick);
@@ -34,13 +34,15 @@ const DefaultColorPicker = props => {
 
   const detectOutClick = e => {
     if (!defaultColorsMenuRef.current.contains(e.target)) {
-      setDefaultMenuOpened(false);
+      setColorsMenuOpened(false);
     }
   };
 
   const defaultMenuToggle = React.useCallback(() => {
-    setDefaultMenuOpened(!isDefaultMenuOpened);
-  }, [isDefaultMenuOpened]);
+    setColorsMenuOpened(!isColorsMenuOpened);
+  }, [isColorsMenuOpened]);
+
+  console.log("TCL: color", props.color);
 
   return (
     <div
@@ -48,10 +50,16 @@ const DefaultColorPicker = props => {
       onClick={defaultMenuToggle}
       ref={defaultColorsMenuRef}
     >
-      {isDefaultMenuOpened && (
+      {isColorsMenuOpened && (
         <ul className="default-colors-menu">
           {defaultColorsArray.map(item => (
-            <li key={item.code}>{item.name}</li>
+            <li key={item.code} onClick={e => props.setColor(item.code)}>
+              {item.name}
+              <span
+                className="color-indicator"
+                style={{ backgroundColor: item.code }}
+              ></span>
+            </li>
           ))}
         </ul>
       )}
@@ -59,4 +67,4 @@ const DefaultColorPicker = props => {
   );
 };
 
-export default DefaultColorPicker;
+export default React.memo(DefaultColors);

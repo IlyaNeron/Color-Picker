@@ -1,0 +1,34 @@
+.range-slider {
+    height: 2px;
+    width: 100%;
+    display: block;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.range-slider:not(:last-child) {
+    margin-bottom: 34px;
+}
+
+.slider-block .range-slider-red {
+    background: linear-gradient(to right, #ff0000, #000000);
+}
+
+.slider-block .range-slider-green {
+    background: linear-gradient(to right, #00ff00, #000000);
+}
+
+.slider-block .range-slider-blue {
+    background: linear-gradient(to right, #0000ff, #000000);
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #989b98;
+    cursor: pointer;
+    border: 1px solid #fff;
+}

@@ -1,0 +1,39 @@
+.default-color {
+    position: relative;
+    cursor: pointer;
+    width: 15%;
+}
+
+.default-colors-menu {
+    position: absolute;
+    box-sizing: border-box;
+    right: 0;
+    top: 120%;
+    list-style: none;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-transform: uppercase;
+}
+
+.default-colors-menu li {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.default-colors-menu li:hover {
+    background: #568ee2;
+    color: #fff;
+}
+
+.default-colors-menu li:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.default-colors-menu li .color-indicator {
+    width: 20px;
+    height: 20px;
+}

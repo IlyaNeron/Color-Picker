@@ -1,13 +1,13 @@
 import React from "react";
 
-import ColorPicker from "./components/ColorPicker";
+import ColorPicker from "../ColorPicker";
 import "./App.css";
 
 const App = props => {
-  const initialColor = "#ff0000";
+  const initialColor = "#ff0b60";
   return (
     <div className="App">
-      <ColorPicker value={initialColor} />
+      <ColorPicker initialValue={initialColor} />
     </div>
   );
 };
