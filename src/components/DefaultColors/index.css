@@ -4,6 +4,16 @@
     width: 15%;
 }
 
+.default-color:before {
+    content: '';
+    border: 10px solid transparent;
+    border-top: 10px solid #aaa;
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 5px);
+    transform: translate(-50%, -50%);
+}
+
 .default-colors-menu {
     position: absolute;
     box-sizing: border-box;

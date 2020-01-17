@@ -2,29 +2,13 @@ import React from "react";
 
 import "./index.css";
 import RangeSlider from "../RangeSlider";
-import { rgbToHex } from "../Color/color";
+import { rgbToHex, hexToRgb } from "../Color/color";
 
 const ColorSlider = props => {
   const sliderMenuRef = React.useRef(null);
   const [isSliderMenuOpened, setSliderMenuOpened] = React.useState(false);
   const [colorIndicator, setColorIndicator] = React.useState(null);
-  const [currentState, setCurrentState] = React.useState({})
-  const [previousState, setPreviousState] = React.useState({})
-  const [redColor, setRedColor] = React.useState(0);
-  const [greenColor, setGreenColor] = React.useState(0);
-  const [blueColor, setBlueColor] = React.useState(0);
-
-  const rgbHooksState = {
-    red: setRedColor,
-    green: setGreenColor,
-    blue: setBlueColor
-  };
-
-  const rgbHooksValues = {
-    red: redColor,
-    green: greenColor,
-    blue: blueColor
-  };
+  const [rgbState, setRgbState] = React.useState(hexToRgb(props.chosenColor));
 
   React.useEffect(() => {
     document.addEventListener("click", detectOutClick);
@@ -35,6 +19,7 @@ const ColorSlider = props => {
 
   React.useEffect(() => {
     setColorIndicator(props.chosenColor);
+    setRgbState(hexToRgb(props.chosenColor));
   }, [props.chosenColor, isSliderMenuOpened]);
 
   React.useEffect(() => {
@@ -42,8 +27,8 @@ const ColorSlider = props => {
       return;
     }
 
-    setColorIndicator(rgbToHex([redColor, greenColor, blueColor]));
-  }, [redColor, greenColor, blueColor]);
+    setColorIndicator(rgbToHex(rgbState));
+  }, [rgbState, isSliderMenuOpened]);
 
   const detectOutClick = e => {
     if (sliderMenuRef.current && !sliderMenuRef.current.contains(e.target)) {
@@ -54,7 +39,7 @@ const ColorSlider = props => {
   };
 
   const setValueFromRgb = () => {
-    props.setChosenColor(rgbToHex([redColor, greenColor, blueColor]));
+    props.setChosenColor(rgbToHex(rgbState));
     sliderMenuToggle();
   };
 
@@ -83,8 +68,8 @@ const ColorSlider = props => {
                 <RangeSlider
                   key={color}
                   field={color}
-                  setValue={rgbHooksState[color]}
-                  color={rgbHooksValues[color]}
+                  setValue={setRgbState}
+                  color={rgbState[color]}
                 />
               ))}
             </div>

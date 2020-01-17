@@ -3,9 +3,15 @@ import React from "react";
 import "./index.css";
 
 const RangeSlider = props => {
-
   const handleInputValue = e => {
-    props.setValue(parseInt(e.target.value, 10));
+    const rgbSliderValue = parseInt(e.target.value, 10);
+
+    props.setValue(value => {
+      const mutColorArr = { ...value };
+      mutColorArr[props.field] = rgbSliderValue;
+
+      return mutColorArr;
+    });
   };
 
   return (
