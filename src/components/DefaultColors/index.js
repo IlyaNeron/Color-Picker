@@ -9,7 +9,7 @@ const defaultColorsArray = [
   },
   {
     name: "yellow",
-    code: "#d3c71ddc"
+    code: "#FFFF00	"
   },
   {
     name: "green",
@@ -41,8 +41,6 @@ const DefaultColors = props => {
   const defaultMenuToggle = React.useCallback(() => {
     setColorsMenuOpened(!isColorsMenuOpened);
   }, [isColorsMenuOpened]);
-
-  console.log("TCL: color", props.color);
 
   return (
     <div

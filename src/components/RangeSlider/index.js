@@ -7,17 +7,15 @@ const RangeSlider = props => {
 
   React.useEffect(() => {
     setInitialColor();
-  }, [props.chosenColor]);
+  }, [props.initialColor]);
 
-  // React.useEffect(() => {
-  //   props.setThunk(colorCount);
-  // }, [colorCount]);
+  React.useEffect(() => {
+    props.setValue(colorCount);
+  }, [colorCount]);
 
   const setInitialColor = () => {
-    setColorCount(convertHex(props.chosenColor));
+    setColorCount(convertHex(props.initialColor));
   };
-
-  console.log(props.chosenColor);
 
   const convertHex = hex => {
     hex = hex.replace("#", "");
@@ -25,20 +23,17 @@ const RangeSlider = props => {
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
 
-    switch (props.colorSelector) {
-      case "red":
-        return r;
-      case "green":
-        return g;
-      case "blue":
-        return b;
-      default:
-        alert("dsfgdeg");
-    }
+    return props.color === "red"
+      ? r
+      : null || props.color === "green"
+      ? g
+      : null || props.color === "blue"
+      ? b
+      : null;
   };
 
   const handleInputValue = e => {
-    setColorCount(e.target.value);
+    setColorCount(parseInt(e.target.value, 10));
   };
 
   return (
@@ -48,7 +43,7 @@ const RangeSlider = props => {
       max="255"
       step="1"
       value={colorCount}
-      className={"range-slider range-slider-" + props.colorSelector}
+      className={"range-slider range-slider-" + props.color}
       onChange={e => handleInputValue(e)}
     />
   );

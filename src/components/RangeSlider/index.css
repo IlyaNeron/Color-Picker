@@ -11,15 +11,15 @@
 }
 
 .slider-block .range-slider-red {
-    background: linear-gradient(to right, #ff0000, #000000);
+    background: linear-gradient(to right, #000000, #ff0000);
 }
 
 .slider-block .range-slider-green {
-    background: linear-gradient(to right, #00ff00, #000000);
+    background: linear-gradient(to right, #000000, #00ff00);
 }
 
 .slider-block .range-slider-blue {
-    background: linear-gradient(to right, #0000ff, #000000);
+    background: linear-gradient(to right, #000000, #0000ff);
 }
 
 .range-slider::-webkit-slider-thumb {
