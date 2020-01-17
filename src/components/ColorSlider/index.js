@@ -2,12 +2,14 @@ import React from "react";
 
 import "./index.css";
 import RangeSlider from "../RangeSlider";
-import { rgbToHex } from "../helpers";
+import { rgbToHex } from "../Color/color";
 
 const ColorSlider = props => {
   const sliderMenuRef = React.useRef(null);
   const [isSliderMenuOpened, setSliderMenuOpened] = React.useState(false);
   const [colorIndicator, setColorIndicator] = React.useState(null);
+  const [currentState, setCurrentState] = React.useState({})
+  const [previousState, setPreviousState] = React.useState({})
   const [redColor, setRedColor] = React.useState(0);
   const [greenColor, setGreenColor] = React.useState(0);
   const [blueColor, setBlueColor] = React.useState(0);
