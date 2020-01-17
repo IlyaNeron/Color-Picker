@@ -8,14 +8,20 @@ const ColorSlider = props => {
   const sliderMenuRef = React.useRef(null);
   const [isSliderMenuOpened, setSliderMenuOpened] = React.useState(false);
   const [colorIndicator, setColorIndicator] = React.useState(null);
-  const [redColor, setRedColor] = React.useState(null);
-  const [greenColor, setGreenColor] = React.useState(null);
-  const [blueColor, setBlueColor] = React.useState(null);
+  const [redColor, setRedColor] = React.useState(0);
+  const [greenColor, setGreenColor] = React.useState(0);
+  const [blueColor, setBlueColor] = React.useState(0);
 
-  const rgbColorsBase = {
+  const rgbHooksState = {
     red: setRedColor,
     green: setGreenColor,
     blue: setBlueColor
+  };
+
+  const rgbHooksValues = {
+    red: redColor,
+    green: greenColor,
+    blue: blueColor
   };
 
   React.useEffect(() => {
@@ -74,9 +80,9 @@ const ColorSlider = props => {
               {["red", "green", "blue"].map(color => (
                 <RangeSlider
                   key={color}
-                  color={color}
-                  setValue={rgbColorsBase[color]}
-                  initialColor={props.chosenColor}
+                  field={color}
+                  setValue={rgbHooksState[color]}
+                  color={rgbHooksValues[color]}
                 />
               ))}
             </div>
